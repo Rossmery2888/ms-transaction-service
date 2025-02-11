@@ -1,0 +1,28 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Transaction Service Api
+servers:
+  - url: http://localhost:8585
+paths:
+  /transaction:
+    get:
+      summary: "Crea transaccion"
+      operationId: createtransaccion
+      tags:
+        - transaccion
+      responses:
+        '200':
+          description: "Registra un nueva transaccion"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/transaccionResponse"
+components:
+  schemas:
+    transaccionResponse:
+      required:
+        - text
+      properties:
+        text:
+          type: string

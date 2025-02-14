@@ -1,15 +1,33 @@
 package com.example.mstransactionservice.controller;
 
+
+import com.example.mstransactionservice.dto.TransactionRequest;
+import com.example.mstransactionservice.model.Transaction;
 import com.example.mstransactionservice.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/api/v1/transactions")
+@RequestMapping("/api/transactions")
 @RequiredArgsConstructor
 public class TransactionController {
-    private final TransactionService creditService;
+    private final TransactionService transactionService;
 
+    @PostMapping
+    public Mono<Transaction> registerTransaction(@RequestBody TransactionRequest request) {
+        return transactionService.registerTransaction(request);
+    }
+
+    @GetMapping("/account/{accountId}")
+    public Flux<Transaction> getTransactionsByAccountId(@PathVariable String accountId) {
+        return transactionService.getTransactionsByAccountId(accountId);
+    }
+
+    @GetMapping("/entity/{relatedEntityId}")
+    public Flux<Transaction> getTransactionsByRelatedEntityId(@PathVariable String relatedEntityId) {
+        return transactionService.getTransactionsByRelatedEntityId(relatedEntityId);
+    }
 
 }
-

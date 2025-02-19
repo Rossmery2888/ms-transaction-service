@@ -15,4 +15,5 @@ public class TransactionRequest {
     private String relatedEntityId;
     private TransactionType type;
     private BigDecimal amount;
+    private BigDecimal commission; //comision
 }

@@ -12,13 +12,17 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
+@Document
 @AllArgsConstructor
 @NoArgsConstructor
 public class Transaction {
+    @Id
     private String id;
     private String accountId;
-    private String relatedEntityId; // Credit ID, Card ID, or Account ID
+    private String relatedEntityId;
     private TransactionType type;
     private BigDecimal amount;
+    private BigDecimal commission;
     private LocalDateTime timestamp;
+    private String description;
 }

@@ -12,17 +12,22 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@Document
 @AllArgsConstructor
 @NoArgsConstructor
+@Document(collection = "transactions")
 public class Transaction {
     @Id
     private String id;
     private String accountId;
-    private String relatedEntityId;
+    private String relatedEntityId; // Credit ID, Card ID, or Account ID
     private TransactionType type;
     private BigDecimal amount;
-    private BigDecimal commission;
     private LocalDateTime timestamp;
+
+    // New fields
+    private String providerName;
+    private String referenceNumber;
+    private String cardNumber;
     private String description;
 }
+

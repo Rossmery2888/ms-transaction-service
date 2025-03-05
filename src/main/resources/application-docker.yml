@@ -1,0 +1,22 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: ms-transaction
+  data:
+    mongodb:
+      uri: mongodb://mongodb:27017/bankapp
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+app:
+  customer-service-url: http://ms-customer:8081
+  account-service-url: http://ms-account:8082
+  credit-service-url: http://ms-credit:8084
+  credit-card-service-url: http://ms-credit-card:8085
